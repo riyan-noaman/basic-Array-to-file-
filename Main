@@ -1,0 +1,51 @@
+package com.company;
+//import libraries
+import java.util.Arrays;
+
+import java.io.*;
+
+
+public class Main {
+
+    public static void main(String[] args) throws Exception {
+
+        //create a one dimensional array
+        String[] storage = new String[3];
+
+        //create variables
+        String name = "Riyan";
+
+        int age = 17;
+
+        boolean inSchool = true;
+
+        //store variables into array
+        storage[0] = "Name: " + name;
+
+        storage[1] = "\nAge: " + age;
+
+        storage[2] = String.valueOf(inSchool);
+
+        //if the value of the boolean is true it will do the following otherwise it will do the else statement
+        if (storage[2].equals("true")){
+            storage[2] = "\n"+ name + " is in school";
+        } else {
+            storage[2] = "\n" + name + " is not in school";
+        }
+
+        System.out.println("=====================Array===============");
+        System.out.println(Arrays.toString(storage));
+
+
+        BufferedWriter writer = new BufferedWriter(new FileWriter("outputFile.txt", false));
+        for (int i = 0; i < storage.length; i++){
+
+            writer.write(storage[i].toString());
+            writer.newLine();
+        }
+        writer.flush();
+
+        System.out.println("Array to file transfer complete");
+
+    }
+}
